@@ -1,0 +1,115 @@
+@mixin col_center($height) {
+  height: $height;
+  line-height: $height;
+}
+@mixin square($num) {
+  width: $num;
+  height: $num;
+}
+@mixin flex_hor($type: center){
+  -webkit-justify-content:$type;
+  justify-content:$type;
+  -moz-box-pack:$type;
+  -webkit--moz-box-pack:$type;
+  box-pack:$type;
+}
+@mixin flex_num($num: 0 0 auto) {
+  -webkit-box-flex: $num;
+  -webkit-flex: $num;
+  flex: $num;
+}
+@mixin flex_col_center($type: center){
+  -webkit-align-items: $type;
+  align-items: $type;
+}
+@mixin flex_direction($type: row){
+  @if $type == row {
+    -webkit-box-orient: horizontal;
+  } @else {
+    -webkit-box-orient: vertical;
+  }
+  -ms-flex-direction: $type;
+  -webkit-flex-direction: $type;
+  flex-direction: $type;
+}
+@mixin showNumLine($line: 2){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
+@mixin fixedBottomBox($bottom: 0.7rem){
+  margin-bottom: $bottom;
+}
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.flex_col {
+  @extend .flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.flex_wrap {
+  @extend .flex;
+  -webkit-flex-wrap:wrap;
+  -webkit-box-lines:multiple;
+  -moz-flex-wrap:wrap;
+  flex-wrap:wrap;
+}
+.flex_right {
+  margin-left: auto;
+}
+.flex_spaceBetween {
+  @extend .flex;
+  @include flex_hor(space-between);
+}
+.flex_center {
+  @extend .flex;
+  @include flex_col_center();
+  @include flex_hor();
+}
+
+html,body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-size: 28px;
+}
+
+.app {
+  @extend .flex_col;
+  .header {
+    @extend .flex;
+    background: #fff;
+    height: 100px;
+    .navbarItem {
+      @include flex_num(0 0 25%);
+      @extend .flex;
+      @include flex_col_center();
+      font-size: 26px;
+      padding: 0 20px;
+      &:first-of-type {
+        order: 1;
+        img {
+          @include square(48px);
+        }
+      }
+      &:last-of-type {
+        order: 3;
+      }
+    }
+    .navbarCenter {
+      @include flex_num(0 0 50%);
+      @extend .flex_center;
+      order: 2;
+      font-size: 32px;
+      color: #191919;
+      font-weight: bold;
+    }
+  }
+}
