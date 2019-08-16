@@ -1,3 +1,4 @@
+
 @mixin col_center($height) {
   height: $height;
   line-height: $height;
@@ -74,15 +75,15 @@
   @include flex_hor();
 }
 
-html,body {
+#root,html,body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
   font-size: 28px;
 }
-
 .app {
   @extend .flex_col;
+  height: 100%;
   .header {
     @extend .flex;
     background: #fff;
@@ -110,6 +111,29 @@ html,body {
       font-size: 32px;
       color: #191919;
       font-weight: bold;
+    }
+  }
+  .containerView {
+    @include flex_num(1);
+    overflow-y: scroll;
+    height: 100%;
+  }
+  .footer {
+    @extend .flex;
+    height: 100px;
+    background: #fff;
+    .item {
+      @include flex_num(1);
+      @extend .flex_col;
+      @extend .flex_center;
+      img {
+        @include square(50px);
+        margin-bottom: 8px;
+      }
+      p {
+        color: #B7B7B7;
+        font-size: 24px;
+      }
     }
   }
 }

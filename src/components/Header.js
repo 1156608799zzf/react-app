@@ -11,7 +11,7 @@ class Header extends Component {
         return (
             <div className="header">
                 <div className="navbarItem">
-                    <img src={require('../../public/images/back.png')} alt="back"/>
+                    <img src={require('../../public/images/other/back.png')} alt="back"/>
                 </div>
                 <div className="navbarCenter">
                     这是标题呀

@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import Header from './views/Header'
-import Footer from './views/Footer'
-// import RouterIndex from './route/index'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import RouterIndex from './route/index'
+import {Provider} from 'react-redux'
+import store from './redux/Store'
 class App extends Component {
     componentDidMount() {
 
@@ -10,7 +12,11 @@ class App extends Component {
         return (
             <div className="app">
                 <Header></Header>
-                {/*<RouterIndex />*/}
+                <div className="containerView">
+                    <Provider store={store}>
+                        <RouterIndex />
+                    </Provider>
+                </div>
                 <Footer></Footer>
             </div>
         )
